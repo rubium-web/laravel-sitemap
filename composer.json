@@ -1,5 +1,5 @@
 {
-    "name": "Rubium/sitemap",
+    "name": "rubium/sitemap",
     "description": "Rubium Sitemap package for Laravel.",
     "homepage": "https://rubium.ru",
     "keywords": ["laravel", "php", "sitemap", "generator", "xml", "html", "google-news"],
