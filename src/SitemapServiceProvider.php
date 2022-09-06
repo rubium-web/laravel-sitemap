@@ -19,7 +19,6 @@ class SitemapServiceProvider extends ServiceProvider implements DeferrableProvid
         $this->loadViewsFrom(__DIR__.'/../views', 'sitemap');
 
         $this->registerPublishing();
-
     }
 
     /**
@@ -30,11 +29,13 @@ class SitemapServiceProvider extends ServiceProvider implements DeferrableProvid
     public function register()
     {
         $this->mergeConfigFrom(
-            __DIR__.'/../config/sitemap.php', 'sitemap'
+            __DIR__.'/../config/sitemap.php',
+            'sitemap'
         );
 
         $this->app->bind('sitemap', function (Container $app) {
             $config = $app->make('config');
+
             return new Sitemap(
                 $config->get('sitemap'),
                 $app->make('cache.store'),
