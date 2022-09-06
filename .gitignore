@@ -12,6 +12,7 @@ composer.lock
 # cs
 .php_cs
 /.php_cs.cache
+/.php-cs-fixer.cache
 
 # phpunit
 /.phpunit.result.cache
