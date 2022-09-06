@@ -1,8 +1,8 @@
 {
-    "name": "laravelium/sitemap",
-    "description": "Laravelium Sitemap package for Laravel.",
-    "homepage": "https://laravelium.com",
-    "keywords": ["laravelium", "laravel", "php", "sitemap", "generator", "xml", "html", "google-news"],
+    "name": "Rubium/sitemap",
+    "description": "Rubium Sitemap package for Laravel.",
+    "homepage": "https://rubium.ru",
+    "keywords": ["laravel", "php", "sitemap", "generator", "xml", "html", "google-news"],
     "license": "MIT",
     "authors": [
         {
@@ -13,30 +13,30 @@
         }
     ],
     "support": {
-        "issues": "https://github.com/Laravelium/laravel-sitemap/issues",
-        "source": "https://github.com/Laravelium/laravel-sitemap",
-        "wiki": "https://github.com/Laravelium/laravel-sitemap/wiki"
+        "issues": "https://github.com/Rubium/laravel-sitemap/issues",
+        "source": "https://github.com/Rubium/laravel-sitemap",
+        "wiki": "https://github.com/Rubium/laravel-sitemap/wiki"
     },
     "require": {
-        "php": ">=7.3",
-        "illuminate/support": "^8.0",
-        "illuminate/filesystem": "^8.0"
+        "php": "^7.2.5|^8.0",
+        "illuminate/support": "^6.0|^7.0|^8.15|^9.0",
+        "illuminate/filesystem": "^6.0|^7.0|^8.0|^9.0"
     },
     "require-dev": {
-        "laravel/framework": "^8.0",
-        "phpunit/phpunit": "^9.3",
+        "laravel/framework": "^6.20.26|^7.29|^8.75|^9.0",
+        "phpunit/phpunit": "^8.5.8|^9.3.3",
         "orchestra/testbench-core": "^6.0",
         "php-coveralls/php-coveralls" : "^2.2"
     },
     "autoload": {
         "psr-0": {
-            "Laravelium\\Sitemap": "src/"
+            "Rubium\\Sitemap": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Laravelium\\Sitemap\\SitemapServiceProvider"
+                "Rubium\\Sitemap\\SitemapServiceProvider"
             ]
         }
     },

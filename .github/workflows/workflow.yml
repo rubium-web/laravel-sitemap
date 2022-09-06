@@ -1,10 +1,6 @@
 name: PHP tests
 
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+on: [push, pull_request]
 
 jobs:
   php-tests:
@@ -12,9 +8,11 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        php-versions: ['7.3', '7.4']
+        php: ['7.3', '7.4', '8.0', '8.1']
+        laravel: ["^6.20.26", "^7.29" "^8.75", "^9.0"]
+        dependency-version: [prefer-lowest, prefer-stable]
 
-    name: PHP ${{ matrix.php-versions }} tests
+    name: PHP ${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.dependency-version }} - ${{ matrix.os }}
 
     steps:
     - name: Checkout
@@ -23,7 +21,7 @@ jobs:
     - name: Setup PHP
       uses: shivammathur/setup-php@v2
       with:
-        php-version: ${{ matrix.php-versions }}
+        php: ${{ matrix.php }}
         extensions: mbstring, intl
         ini-values: post_max_size=256M, short_open_tag=On
         coverage: xdebug        
@@ -33,19 +31,11 @@ jobs:
       run: composer validate
 
     - name: Install dependencies
-      run: composer install --prefer-dist --no-progress --no-suggest
+        run: |
+          composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" --no-interaction --no-update
+          composer update --${{ matrix.dependency-version }} --prefer-dist --no-interaction
       
     - name: Execute PHPUnit tests
       run: vendor/bin/phpunit --configuration phpunit.xml --coverage-text
-
-    - name: Upload coverage results to Codeclimate
-      env:
-        CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-      run: |
-        curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-        chmod +x ./cc-test-reporter
-        ./cc-test-reporter before-build
-        vendor/bin/phpunit tests --coverage-clover build/logs/clover.xml
-        ./cc-test-reporter after-build -t clover --exit-code $?
 
 
