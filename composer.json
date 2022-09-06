@@ -34,11 +34,6 @@
             "Rubium\\Rubium\\": "src"
         }
     },
-    "autoload-dev": {
-        "psr-4": {
-            "Rubium\\Rubium\\Tests\\": "tests/"
-        }
-    },
     "extra": {
         "laravel": {
             "providers": [
