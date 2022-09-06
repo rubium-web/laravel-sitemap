@@ -1,6 +1,6 @@
-# **[Rubium Sitemap](https://Rubium.com) package**
+# **Rubium Sitemap package**
 
-[![License](https://poser.pugx.org/Rubium/sitemap/license)](https://packagist.org/packages/Rubium/sitemap) [![PHP tests](https://github.com/rubium-web-web/laravel-sitemap/workflows/PHP%20tests/badge.svg?branch=master)](https://github.com//Rubium/laravel-sitemap/actions?query=workflow%3A%22PHP+tests%22) [![Maintainability](https://api.codeclimate.com/v1/badges/c7b8c0079addb1217836/maintainability)](https://codeclimate.com/github/Rubium/laravel-sitemap/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/c7b8c0079addb1217836/test_coverage)](https://codeclimate.com/github/Rubium/laravel-sitemap/test_coverage) [![Style Status](https://github.styleci.io/repos/10392044/shield?style=normal&branch=master)](https://github.styleci.io/repos/10392044) [![Latest Stable Version](https://poser.pugx.org/Rubium/sitemap/v/stable)](https://packagist.org/packages/rubium/sitemap) [![Total Downloads](https://poser.pugx.org/Rubium/sitemap/downloads)](https://packagist.org/packages/rubium/sitemap)
+[![License](https://poser.pugx.org/rubium/sitemap/license)](https://packagist.org/packages/rubium/sitemap) [![PHP tests](https://github.com/rubium-web/laravel-sitemap/workflows/PHP%20tests/badge.svg?branch=master)](https://github.com/rubium-web/laravel-sitemap/actions?query=workflow%3A%22PHP+tests%22) [![Maintainability](https://api.codeclimate.com/v1/badges/c7b8c0079addb1217836/maintainability)](https://codeclimate.com/github/Rubium/laravel-sitemap/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/c7b8c0079addb1217836/test_coverage)](https://codeclimate.com/github/rubium-web/laravel-sitemap/test_coverage) [![Style Status](https://github.styleci.io/repos/10392044/shield?style=normal&branch=master)](https://github.styleci.io/repos/10392044) [![Latest Stable Version](https://poser.pugx.org/rubium/sitemap/v/stable)](https://packagist.org/packages/rubium/sitemap) [![Total Downloads](https://poser.pugx.org/rubium/sitemap/downloads)](https://packagist.org/packages/rubium/sitemap)
 
 *Rubium Sitemap generator for Laravel.*
 
@@ -14,13 +14,6 @@ Run the following command and provide the latest stable version (e.g v8.\*) :
 
 ```bash
 composer require rubium/sitemap
-```
-
-*or add the following to your `composer.json` file :*
-
-#### For Laravel 8
-```json
-"rubium/sitemap": "8.*"
 ```
 
 *Publish needed assets (styles, views, config files) :*
