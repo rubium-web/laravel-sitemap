@@ -1,6 +1,6 @@
 <?php
 
-namespace Laravelium\Sitemap;
+namespace Rubium\Sitemap;
 
 /**
  * Sitemap class for laravel-sitemap package.
@@ -9,16 +9,16 @@ namespace Laravelium\Sitemap;
  *
  * @version 7.0.1
  *
- * @link https://gitlab.com/Laravelium
+ * @link https://gitlab.com/Rubium
  *
  * @license http://opensource.org/licenses/mit-license.php MIT License
  */
 
-use Illuminate\Filesystem\Filesystem as Filesystem;
-use Illuminate\Contracts\View\Factory as ViewFactory;
 use Illuminate\Contracts\Cache\Repository as CacheRepository;
 use Illuminate\Contracts\Config\Repository as ConfigRepository;
 use Illuminate\Contracts\Routing\ResponseFactory as ResponseFactory;
+use Illuminate\Contracts\View\Factory as ViewFactory;
+use Illuminate\Filesystem\Filesystem as Filesystem;
 
 class Sitemap
 {
@@ -85,7 +85,7 @@ class Sitemap
      * Set cache options.
      *
      * @param string              $key
-     * @param Carbon|Datetime|int $duration
+     * @param \Carbon\Carbon|Datetime|int $duration
      * @param bool                $useCache
      */
     public function setCache($key = null, $duration = null, $useCache = true)
@@ -136,16 +136,16 @@ class Sitemap
     public function add($loc, $lastmod = null, $priority = null, $freq = null, $images = [], $title = null, $translations = [], $videos = [], $googlenews = [], $alternates = [])
     {
         $params = [
-            'loc'           => $loc,
-            'lastmod'       => $lastmod,
-            'priority'      => $priority,
-            'freq'          => $freq,
-            'images'        => $images,
-            'title'         => $title,
-            'translations'  => $translations,
-            'videos'        => $videos,
-            'googlenews'    => $googlenews,
-            'alternates'    => $alternates,
+            'loc' => $loc,
+            'lastmod' => $lastmod,
+            'priority' => $priority,
+            'freq' => $freq,
+            'images' => $images,
+            'title' => $title,
+            'translations' => $translations,
+            'videos' => $videos,
+            'googlenews' => $googlenews,
+            'alternates' => $alternates,
         ];
 
         $this->addItem($params);
@@ -160,7 +160,6 @@ class Sitemap
      */
     public function addItem($params = [])
     {
-
         // if is multidimensional
         if (array_key_exists(1, $params)) {
             foreach ($params as $a) {
@@ -262,16 +261,16 @@ class Sitemap
         $googlenews['publication_date'] = isset($googlenews['publication_date']) ? $googlenews['publication_date'] : date('Y-m-d H:i:s');
 
         $this->model->setItems([
-            'loc'          => $loc,
-            'lastmod'      => $lastmod,
-            'priority'     => $priority,
-            'freq'         => $freq,
-            'images'       => $images,
-            'title'        => $title,
+            'loc' => $loc,
+            'lastmod' => $lastmod,
+            'priority' => $priority,
+            'freq' => $freq,
+            'images' => $images,
+            'title' => $title,
             'translations' => $translations,
-            'videos'       => $videos,
-            'googlenews'   => $googlenews,
-            'alternates'   => $alternates,
+            'videos' => $videos,
+            'googlenews' => $googlenews,
+            'alternates' => $alternates,
         ]);
     }
 
@@ -286,7 +285,7 @@ class Sitemap
     public function addSitemap($loc, $lastmod = null)
     {
         $this->model->setSitemaps([
-            'loc'     => $loc,
+            'loc' => $loc,
             'lastmod' => $lastmod,
         ]);
     }
@@ -310,7 +309,7 @@ class Sitemap
      * @param string $format (options: xml, html, txt, ror-rss, ror-rdf, google-news)
      * @param string $style  (path to custom xls style like '/styles/xsl/xml-sitemap.xsl')
      *
-     * @return View
+     * @return \Illuminate\Http\Response
      */
     public function render($format = 'xml', $style = null)
     {
@@ -355,21 +354,23 @@ class Sitemap
 
         $channel = [
             'title' => $this->model->getTitle(),
-            'link'  => $this->model->getLink(),
+            'link' => $this->model->getLink(),
         ];
 
         // check if styles are enabled
-        if ($this->model->getUseStyles()) {
-            if (null != $this->model->getSloc() && file_exists(public_path($this->model->getSloc().$format.'.xsl'))) {
-                // use style from your custom location
-                $style = $this->model->getSloc().$format.'.xsl';
+        if (null == $style) {
+            if ($this->model->getUseStyles()) {
+                if (null != $this->model->getSloc() && file_exists(public_path($this->model->getSloc().$format.'.xsl'))) {
+                    // use style from your custom location
+                    $style = $this->model->getSloc().$format.'.xsl';
+                } else {
+                    // don't use style
+                    $style = null;
+                }
             } else {
                 // don't use style
                 $style = null;
             }
-        } else {
-            // don't use style
-            $style = null;
         }
 
         switch ($format) {

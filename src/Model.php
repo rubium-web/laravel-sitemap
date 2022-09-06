@@ -1,6 +1,6 @@
 <?php
 
-namespace Laravelium\Sitemap;
+namespace Rubium\Sitemap;
 
 /**
  * Model class for laravel-sitemap package.
@@ -9,7 +9,7 @@ namespace Laravelium\Sitemap;
  *
  * @version 7.0.1
  *
- * @link https://gitlab.com/Laravelium
+ * @link https://gitlab.com/Rubium
  *
  * @license http://opensource.org/licenses/mit-license.php MIT License
  */
@@ -347,7 +347,7 @@ class Model
      *
      * @param bool $useGzip
      */
-    public function setUseGzip($useGzip=true)
+    public function setUseGzip($useGzip = true)
     {
         $this->useGzip = $useGzip;
     }

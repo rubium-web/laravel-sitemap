@@ -12,9 +12,11 @@ composer.lock
 # cs
 .php_cs
 /.php_cs.cache
+/.php-cs-fixer.cache
 
 # phpunit
 /.phpunit.result.cache
+/.phpunit.cache
 
 # test runtime files
 /tests/tmp
