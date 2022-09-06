@@ -2,10 +2,10 @@
 
 namespace Rubium\Sitemap;
 
-use Illuminate\Support\ServiceProvider;
-use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Contracts\Routing\ResponseFactory;
+use Illuminate\Contracts\Support\DeferrableProvider;
+use Illuminate\Support\ServiceProvider;
 
 class SitemapServiceProvider extends ServiceProvider implements DeferrableProvider
 {

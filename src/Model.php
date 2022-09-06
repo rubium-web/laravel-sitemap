@@ -347,7 +347,7 @@ class Model
      *
      * @param bool $useGzip
      */
-    public function setUseGzip($useGzip=true)
+    public function setUseGzip($useGzip = true)
     {
         $this->useGzip = $useGzip;
     }

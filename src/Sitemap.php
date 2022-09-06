@@ -14,11 +14,11 @@ namespace Rubium\Sitemap;
  * @license http://opensource.org/licenses/mit-license.php MIT License
  */
 
-use Illuminate\Filesystem\Filesystem as Filesystem;
-use Illuminate\Contracts\View\Factory as ViewFactory;
 use Illuminate\Contracts\Cache\Repository as CacheRepository;
 use Illuminate\Contracts\Config\Repository as ConfigRepository;
 use Illuminate\Contracts\Routing\ResponseFactory as ResponseFactory;
+use Illuminate\Contracts\View\Factory as ViewFactory;
+use Illuminate\Filesystem\Filesystem as Filesystem;
 
 class Sitemap
 {
@@ -136,16 +136,16 @@ class Sitemap
     public function add($loc, $lastmod = null, $priority = null, $freq = null, $images = [], $title = null, $translations = [], $videos = [], $googlenews = [], $alternates = [])
     {
         $params = [
-            'loc'           => $loc,
-            'lastmod'       => $lastmod,
-            'priority'      => $priority,
-            'freq'          => $freq,
-            'images'        => $images,
-            'title'         => $title,
-            'translations'  => $translations,
-            'videos'        => $videos,
-            'googlenews'    => $googlenews,
-            'alternates'    => $alternates,
+            'loc' => $loc,
+            'lastmod' => $lastmod,
+            'priority' => $priority,
+            'freq' => $freq,
+            'images' => $images,
+            'title' => $title,
+            'translations' => $translations,
+            'videos' => $videos,
+            'googlenews' => $googlenews,
+            'alternates' => $alternates,
         ];
 
         $this->addItem($params);
@@ -160,7 +160,6 @@ class Sitemap
      */
     public function addItem($params = [])
     {
-
         // if is multidimensional
         if (array_key_exists(1, $params)) {
             foreach ($params as $a) {
@@ -262,16 +261,16 @@ class Sitemap
         $googlenews['publication_date'] = isset($googlenews['publication_date']) ? $googlenews['publication_date'] : date('Y-m-d H:i:s');
 
         $this->model->setItems([
-            'loc'          => $loc,
-            'lastmod'      => $lastmod,
-            'priority'     => $priority,
-            'freq'         => $freq,
-            'images'       => $images,
-            'title'        => $title,
+            'loc' => $loc,
+            'lastmod' => $lastmod,
+            'priority' => $priority,
+            'freq' => $freq,
+            'images' => $images,
+            'title' => $title,
             'translations' => $translations,
-            'videos'       => $videos,
-            'googlenews'   => $googlenews,
-            'alternates'   => $alternates,
+            'videos' => $videos,
+            'googlenews' => $googlenews,
+            'alternates' => $alternates,
         ]);
     }
 
@@ -286,7 +285,7 @@ class Sitemap
     public function addSitemap($loc, $lastmod = null)
     {
         $this->model->setSitemaps([
-            'loc'     => $loc,
+            'loc' => $loc,
             'lastmod' => $lastmod,
         ]);
     }
@@ -355,7 +354,7 @@ class Sitemap
 
         $channel = [
             'title' => $this->model->getTitle(),
-            'link'  => $this->model->getLink(),
+            'link' => $this->model->getLink(),
         ];
 
         // check if styles are enabled
