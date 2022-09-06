@@ -299,8 +299,15 @@ class SitemapTest extends TestCase
         $this->assertEquals(200, $sitemap->status());
         $this->assertEquals('text/xml; charset=utf-8', $sitemap->headers->get('Content-Type'));
 
-        $sitemap = $this->sitemap->render('xml', '/styles/xsl/xml-sitemap.xsl');
+        $this->artisan('vendor:publish', [
+            '--tag' => 'sitemap-assets', 
+            '--provider' => SitemapServiceProvider::class,
+            '--force' => true
+        ]);
+
+        $sitemap = $this->sitemap->render('xml', '/vendor/sitemap/styles/xsl/xml-sitemap.xsl');
         $this->assertEquals('text/xml; charset=utf-8', $sitemap->headers->get('Content-Type'));
+        $this->assertStringContainsString('/styles/xsl/xml-sitemap.xsl', $sitemap->getContent());
 
         $sitemap = $this->sitemap->render('sitemapindex');
         $this->assertEquals('text/xml; charset=utf-8', $sitemap->headers->get('Content-Type'));

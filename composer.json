@@ -31,7 +31,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Rubium\\Sitemap\\": "src"
+            "Rubium\\Rubium\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Rubium\\Rubium\\Tests\\": "tests/"
         }
     },
     "extra": {

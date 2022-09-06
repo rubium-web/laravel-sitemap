@@ -18,21 +18,8 @@ class SitemapServiceProvider extends ServiceProvider implements DeferrableProvid
     {
         $this->loadViewsFrom(__DIR__.'/../views', 'sitemap');
 
-        $config_file = __DIR__.'/../config/config.php';
+        $this->registerPublishing();
 
-        $this->mergeConfigFrom($config_file, 'sitemap');
-
-        $this->publishes([
-            $config_file => config_path('sitemap.php'),
-        ], 'config');
-
-        $this->publishes([
-            __DIR__.'/../views' => base_path('resources/views/vendor/sitemap'),
-        ], 'views');
-
-        $this->publishes([
-            __DIR__.'/../public' => public_path('vendor/sitemap'),
-        ], 'public');
     }
 
     /**
@@ -42,9 +29,12 @@ class SitemapServiceProvider extends ServiceProvider implements DeferrableProvid
      */
     public function register()
     {
+        $this->mergeConfigFrom(
+            __DIR__.'/../config/sitemap.php', 'sitemap'
+        );
+
         $this->app->bind('sitemap', function (Container $app) {
             $config = $app->make('config');
-
             return new Sitemap(
                 $config->get('sitemap'),
                 $app->make('cache.store'),
@@ -64,5 +54,27 @@ class SitemapServiceProvider extends ServiceProvider implements DeferrableProvid
     public function provides()
     {
         return ['sitemap', Sitemap::class];
+    }
+
+    /**
+     * Register the package's publishable resources.
+     *
+     * @return void
+     */
+    private function registerPublishing()
+    {
+        if ($this->app->runningInConsole()) {
+            $this->publishes([
+                __DIR__.'/../config/sitemap.php' => config_path('sitemap.php'),
+            ], 'sitemap-config');
+
+            $this->publishes([
+                __DIR__.'/../views' => base_path('resources/views/vendor/sitemap'),
+            ], 'views');
+
+            $this->publishes([
+                __DIR__.'/../public' => public_path('vendor/sitemap'),
+            ], ['sitemap-assets', 'laravel-assets']);
+        }
     }
 }
