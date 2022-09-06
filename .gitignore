@@ -16,6 +16,7 @@ composer.lock
 
 # phpunit
 /.phpunit.result.cache
+/.phpunit.cache
 
 # test runtime files
 /tests/tmp
