@@ -30,7 +30,7 @@
         "php-coveralls/php-coveralls" : "^2.2"
     },
     "autoload": {
-        "psr-0": {
+        "psr-4": {
             "Rubium\\Sitemap\\": "src"
         }
     },
