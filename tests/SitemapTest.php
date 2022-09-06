@@ -295,17 +295,17 @@ class SitemapTest extends TestCase
 
     public function testRenderSitemap()
     {
+        $this->sitemap->model->setSloc('/styles/');
+
+        $this->app->bind('path.public', function () {
+            return realpath(__DIR__.'/../public');
+        });
+
         $sitemap = $this->sitemap->render();
         $this->assertEquals(200, $sitemap->status());
         $this->assertEquals('text/xml; charset=utf-8', $sitemap->headers->get('Content-Type'));
 
-        $this->artisan('vendor:publish', [
-            '--tag' => 'sitemap-assets', 
-            '--provider' => SitemapServiceProvider::class,
-            '--force' => true
-        ]);
-
-        $sitemap = $this->sitemap->render('xml', '/vendor/sitemap/styles/xsl/xml-sitemap.xsl');
+        $sitemap = $this->sitemap->render('xml', '/styles/xsl/xml-sitemap.xsl');
         $this->assertEquals('text/xml; charset=utf-8', $sitemap->headers->get('Content-Type'));
         $this->assertStringContainsString('/styles/xsl/xml-sitemap.xsl', $sitemap->getContent());
 
@@ -435,7 +435,7 @@ class SitemapTest extends TestCase
         $this->sitemap->model->setSloc('/styles/');
 
         $this->app->bind('path.public', function () {
-            return realpath(__DIR__.'/../src/public');
+            return realpath(__DIR__.'/../public');
         });
 
         $sitemap = $this->sitemap->generate('xml', 'xml.xsl');
