@@ -16,7 +16,7 @@
 	</testsuites>
 	<filter>
 		<whitelist addUncoveredFilesFromWhitelist="true">
-			<directory suffix=".php">./src/Rubium/Sitemap</directory>
+			<directory suffix=".php">./src</directory>
 			<exclude>
 				<directory>./tests/</directory>
 			</exclude>
