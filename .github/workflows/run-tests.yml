@@ -9,14 +9,14 @@ jobs:
     strategy:
       matrix:
         php: ["7.3", "7.4", "8.0", "8.1"]
-        laravel: ["^6.20.44", "^7.30.6", "^8.83", "^9.0"]
+        laravel: ["^6.20.42", "^7.30.6", "^8.75", "^9.0"]
         dependency-version: [prefer-lowest, prefer-stable]
         include:
-          - laravel: "^6.20.44"
+          - laravel: "^6.20.42"
             testbench: "^4.18"
           - laravel: "^7.30.6"
             testbench: "^5.18"
-          - laravel: "^8.83"
+          - laravel: "^8.75"
             testbench: "^6.23"
           - laravel: "^9.0"
             testbench: "^7.0"
