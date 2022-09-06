@@ -9,7 +9,7 @@ jobs:
     strategy:
       matrix:
         php: ["7.3", "7.4", "8.0", "8.1"]
-        laravel: ["^6.20.26", "^7.29" "^8.75", "^9.0"]
+        laravel: ["^6.20.26", "^7.29", "^8.75", "^9.0"]
         dependency-version: [prefer-lowest, prefer-stable]
 
     name: PHP ${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.dependency-version }} - ${{ matrix.os }}
