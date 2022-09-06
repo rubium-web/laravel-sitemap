@@ -34,7 +34,7 @@ jobs:
         extensions: mbstring, intl
         ini-values: post_max_size=256M, short_open_tag=On
         coverage: xdebug        
-        tools: php-cs-fixer, phpunit
+        tools: phpunit
 
     - name: Validate composer.json and composer.lock
       run: composer validate
