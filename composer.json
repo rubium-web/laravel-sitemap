@@ -1,21 +1,26 @@
 {
-    "name": "rubium/sitemap",
-    "description": "Rubium Sitemap package for Laravel.",
+    "name": "rubium/laravel-sitemap",
+    "description": "Rubium LaravelSitemap package for Laravel.",
     "homepage": "https://rubium.ru",
     "keywords": ["laravel", "php", "sitemap", "generator", "xml", "html", "google-news"],
     "license": "MIT",
     "authors": [
         {
+          "name": "Rubium Web",
+          "email": "hello@rubium.ru",
+          "role": "Developer"
+        },
+        {
             "name": "Rumen Damyanov",
             "email": "r@alfamatter.com",
-            "role": "Developer",
+            "role": "Creator",
             "homepage": "https://darumen.com"
         }
     ],
     "support": {
-        "issues": "https://github.com/Rubium/laravel-sitemap/issues",
-        "source": "https://github.com/Rubium/laravel-sitemap",
-        "wiki": "https://github.com/Rubium/laravel-sitemap/wiki"
+        "issues": "https://github.com/rubium-web/laravel-sitemap/issues",
+        "source": "https://github.com/rubium-web/laravel-sitemap",
+        "wiki": "https://github.com/rubium-web/laravel-sitemap/wiki"
     },
     "require": {
         "php": "^7.2.5|^8.0",
@@ -30,18 +35,18 @@
     },
     "autoload": {
         "psr-4": {
-            "Rubium\\Sitemap\\": "src"
+            "Rubium\\LaravelSitemap\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Rubium\\Sitemap\\Tests\\": "tests/"
+            "Rubium\\LaravelSitemap\\Tests\\": "tests/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Rubium\\Sitemap\\SitemapServiceProvider"
+                "Rubium\\LaravelSitemap\\LaravelSitemapServiceProvider"
             ]
         }
     },

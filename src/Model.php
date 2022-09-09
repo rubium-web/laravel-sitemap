@@ -1,6 +1,6 @@
 <?php
 
-namespace Rubium\Sitemap;
+namespace Rubium\LaravelSitemap;
 
 /**
  * Model class for laravel-sitemap package.
@@ -137,7 +137,7 @@ class Model
      *
      * @return array
      */
-    public function getSitemaps()
+    public function getLaravelSitemaps()
     {
         return $this->sitemaps;
     }
@@ -277,7 +277,7 @@ class Model
      *
      * @param array $sitemap
      */
-    public function setSitemaps($sitemap)
+    public function setLaravelSitemaps($sitemap)
     {
         $this->sitemaps[] = $sitemap;
     }
@@ -375,7 +375,7 @@ class Model
      *
      * @param array $sitemaps
      */
-    public function resetSitemaps($sitemaps = [])
+    public function resetLaravelSitemaps($sitemaps = [])
     {
         $this->sitemaps = $sitemaps;
     }
