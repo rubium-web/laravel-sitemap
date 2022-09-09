@@ -1,8 +1,8 @@
-# **Rubium Sitemap package**
+# **Rubium LaravelSitemap package**
 
 [![License](https://poser.pugx.org/rubium/sitemap/license)](https://packagist.org/packages/rubium/sitemap) [![PHP tests](https://github.com/rubium-web/laravel-sitemap/workflows/PHP%20tests/badge.svg?branch=master)](https://github.com/rubium-web/laravel-sitemap/actions?query=workflow%3A%22PHP+tests%22) [![Maintainability](https://api.codeclimate.com/v1/badges/c7b8c0079addb1217836/maintainability)](https://codeclimate.com/github/Rubium/laravel-sitemap/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/c7b8c0079addb1217836/test_coverage)](https://codeclimate.com/github/rubium-web/laravel-sitemap/test_coverage) [![Style Status](https://github.styleci.io/repos/10392044/shield?style=normal&branch=master)](https://github.styleci.io/repos/10392044) [![Latest Stable Version](https://poser.pugx.org/rubium/sitemap/v/stable)](https://packagist.org/packages/rubium/sitemap) [![Total Downloads](https://poser.pugx.org/rubium/sitemap/downloads)](https://packagist.org/packages/rubium/sitemap)
 
-*Rubium Sitemap generator for Laravel.*
+*Rubium LaravelSitemap generator for Laravel.*
 
 ## Notes
 
@@ -19,7 +19,7 @@ composer require rubium/sitemap
 *Publish needed assets (styles, views, config files) :*
 
 ```bash
-php artisan vendor:publish --provider="Rubium\Sitemap\SitemapServiceProvider"
+php artisan vendor:publish --provider="Rubium\LaravelSitemap\LaravelSitemapServiceProvider"
 ```
 **Note:** *Composer won't update them after `composer update`, you'll need to do it manually!*
 
@@ -27,7 +27,7 @@ php artisan vendor:publish --provider="Rubium\Sitemap\SitemapServiceProvider"
 
 - [How to generate dynamic sitemap (with optional caching)](https://github.com/rubium-web/laravel-sitemap/wiki/Dynamic-sitemap)
 
-- [How to generate BIG sitemaps (with more than 1M items)](https://github.com/rubium-web/laravel-sitemap/wiki/Sitemap-index)
+- [How to generate BIG sitemaps (with more than 1M items)](https://github.com/rubium-web/laravel-sitemap/wiki/LaravelSitemap-index)
 
 - [How to generate sitemap to a file](https://github.com/rubium-web/laravel-sitemap/wiki/Generate-sitemap)
 

@@ -1,13 +1,13 @@
 <?php
 
-namespace Rubium\Sitemap;
+namespace Rubium\LaravelSitemap;
 
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider;
 
-class SitemapServiceProvider extends ServiceProvider implements DeferrableProvider
+class LaravelSitemapServiceProvider extends ServiceProvider implements DeferrableProvider
 {
     /**
      * Bootstrap the application events.
@@ -36,7 +36,7 @@ class SitemapServiceProvider extends ServiceProvider implements DeferrableProvid
         $this->app->bind('sitemap', function (Container $app) {
             $config = $app->make('config');
 
-            return new Sitemap(
+            return new LaravelSitemap(
                 $config->get('sitemap'),
                 $app->make('cache.store'),
                 $config,
@@ -46,7 +46,7 @@ class SitemapServiceProvider extends ServiceProvider implements DeferrableProvid
             );
         });
 
-        $this->app->alias('sitemap', Sitemap::class);
+        $this->app->alias('sitemap', LaravelSitemap::class);
     }
 
     /**
@@ -54,7 +54,7 @@ class SitemapServiceProvider extends ServiceProvider implements DeferrableProvid
      */
     public function provides()
     {
-        return ['sitemap', Sitemap::class];
+        return ['sitemap', LaravelSitemap::class];
     }
 
     /**

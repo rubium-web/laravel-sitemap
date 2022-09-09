@@ -10,7 +10,7 @@
 	 stopOnFailure="false"
 >
 	<testsuites>
-		<testsuite name="Sitemap Test Suite">
+		<testsuite name="LaravelSitemap Test Suite">
 			<directory suffix=".php">./tests/</directory>
 		</testsuite>
 	</testsuites>
