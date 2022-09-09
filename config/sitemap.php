@@ -1,6 +1,6 @@
 <?php
 
-/* Simple configuration file for Laravel Sitemap package */
+/* Simple configuration file for Laravel LaravelSitemap package */
 return [
     'use_cache' => false,
     'cache_key' => 'laravel-sitemap.'.config('app.url'),

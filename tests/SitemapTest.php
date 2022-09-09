@@ -1,19 +1,19 @@
 <?php
 
-namespace Rubium\Sitemap\Test;
+namespace Rubium\LaravelSitemap\Test;
 
 use Orchestra\Testbench\TestCase;
-use Rubium\Sitemap\Sitemap;
-use Rubium\Sitemap\SitemapServiceProvider;
+use Rubium\LaravelSitemap\LaravelSitemap;
+use Rubium\LaravelSitemap\LaravelSitemapServiceProvider;
 
-class SitemapTest extends TestCase
+class LaravelSitemapTest extends TestCase
 {
     /**
-     * @var Sitemap
+     * @var LaravelSitemap
      */
     protected $sitemap;
     /**
-     * @var SitemapServiceProvider
+     * @var LaravelSitemapServiceProvider
      */
     protected $sp;
     /**
@@ -23,12 +23,12 @@ class SitemapTest extends TestCase
 
     protected function getPackageProviders($app)
     {
-        return [SitemapServiceProvider::class];
+        return [LaravelSitemapServiceProvider::class];
     }
 
     protected function getPackageAliases($app)
     {
-        return ['Sitemap' => Sitemap::class];
+        return ['LaravelSitemap' => LaravelSitemap::class];
     }
 
     public function setUp() : void
@@ -37,7 +37,7 @@ class SitemapTest extends TestCase
 
         $config = [
             'sitemap.use_cache' => false,
-            'sitemap.cache_key' => 'Laravel.Sitemap.',
+            'sitemap.cache_key' => 'rubium.laravelsitemap.',
             'sitemap.cache_duration' => 3600,
             'sitemap.testing' => true,
             'sitemap.styles_location' => '/styles/',
@@ -45,24 +45,24 @@ class SitemapTest extends TestCase
 
         config($config);
 
-        $this->sitemap = $this->app->make(Sitemap::class);
+        $this->sitemap = $this->app->make(LaravelSitemap::class);
     }
 
     public function testMisc()
     {
         // test object initialization
-        $this->assertInstanceOf(Sitemap::class, $this->sitemap);
+        $this->assertInstanceOf(LaravelSitemap::class, $this->sitemap);
 
         // test custom methods
-        $this->assertEquals([SitemapServiceProvider::class], $this->getPackageProviders($this->sitemap));
-        $this->assertEquals(['Sitemap' => Sitemap::class], $this->getPackageAliases($this->sitemap));
+        $this->assertEquals([LaravelSitemapServiceProvider::class], $this->getPackageProviders($this->sitemap));
+        $this->assertEquals(['LaravelSitemap' => LaravelSitemap::class], $this->getPackageAliases($this->sitemap));
 
-        // test SitemapServiceProvider (fixes coverage of the class!)
-        $this->sp = new SitemapServiceProvider($this->sitemap);
-        $this->assertEquals(['sitemap', Sitemap::class], $this->sp->provides());
+        // test LaravelSitemapServiceProvider (fixes coverage of the class!)
+        $this->sp = new LaravelSitemapServiceProvider($this->sitemap);
+        $this->assertEquals(['sitemap', LaravelSitemap::class], $this->sp->provides());
     }
 
-    public function testSitemapAttributes()
+    public function testLaravelSitemapAttributes()
     {
         $this->sitemap->model->setLink('TestLink');
         $this->sitemap->model->setTitle('TestTitle');
@@ -88,7 +88,7 @@ class SitemapTest extends TestCase
         $this->assertEquals('https://static.foobar.tld/xsl-styles/', $this->sitemap->model->getSloc());
     }
 
-    public function testSitemapAdd()
+    public function testLaravelSitemapAdd()
     {
         // dummy data
         $translations = [
@@ -221,7 +221,7 @@ class SitemapTest extends TestCase
         $this->assertCount(0, $this->sitemap->model->getItems());
     }
 
-    public function testSitemapAddItem()
+    public function testLaravelSitemapAddItem()
     {
         // add one item
         $this->sitemap->addItem([
@@ -256,7 +256,7 @@ class SitemapTest extends TestCase
         $this->assertEquals('TestLoc3', $items[2]['loc']);
     }
 
-    public function testSitemapSetCache()
+    public function testLaravelSitemapSetCache()
     {
         $this->sitemap->setCache('TestKey', 69, true);
 
@@ -265,21 +265,21 @@ class SitemapTest extends TestCase
         $this->assertEquals(true, $this->sitemap->model->getUseCache());
     }
 
-    public function testSitemapAddSitemap()
+    public function testLaravelSitemapAddLaravelSitemap()
     {
-        $this->assertEquals([], $this->sitemap->model->getSitemaps());
+        $this->assertEquals([], $this->sitemap->model->getLaravelSitemaps());
 
-        $this->sitemap->addSitemap('https://test.local', '2018-06-11 14:35:00');
+        $this->sitemap->addLaravelSitemap('https://test.local', '2018-06-11 14:35:00');
 
-        $testSitemapsArray = [
+        $testLaravelSitemapsArray = [
             'loc' => 'https://test.local',
             'lastmod' => '2018-06-11 14:35:00',
         ];
 
-        $this->assertEquals($testSitemapsArray, $this->sitemap->model->getSitemaps()[0]);
+        $this->assertEquals($testLaravelSitemapsArray, $this->sitemap->model->getLaravelSitemaps()[0]);
 
-        $this->sitemap->resetSitemaps();
-        $this->assertEquals([], $this->sitemap->model->getSitemaps());
+        $this->sitemap->resetLaravelSitemaps();
+        $this->assertEquals([], $this->sitemap->model->getLaravelSitemaps());
     }
 
     public function testIsCached()
@@ -293,7 +293,7 @@ class SitemapTest extends TestCase
         $this->assertEquals(true, $this->sitemap->IsCached());
     }
 
-    public function testRenderSitemap()
+    public function testRenderLaravelSitemap()
     {
         $this->sitemap->model->setSloc('/styles/');
 
@@ -352,7 +352,7 @@ class SitemapTest extends TestCase
         $this->assertEquals('text/xml; charset=utf-8', $sitemap->headers->get('Content-Type'));
     }
 
-    public function testStoreSitemap()
+    public function testStoreLaravelSitemap()
     {
         $sitemap = $this->sitemap->store();
         $this->assertEquals(null, $sitemap);
@@ -428,7 +428,7 @@ class SitemapTest extends TestCase
         $this->assertEquals(null, $sitemap);
     }
 
-    public function testGenerateSitemap()
+    public function testGenerateLaravelSitemap()
     {
         $this->sitemap->model->setUseStyles(true);
         $this->sitemap->model->setUseCache(true);

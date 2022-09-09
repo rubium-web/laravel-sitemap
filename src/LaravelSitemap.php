@@ -1,9 +1,9 @@
 <?php
 
-namespace Rubium\Sitemap;
+namespace Rubium\LaravelSitemap;
 
 /**
- * Sitemap class for laravel-sitemap package.
+ * LaravelSitemap class for laravel-sitemap package.
  *
  * @author Rumen Damyanov <r@alfamatter.com>
  *
@@ -20,7 +20,7 @@ use Illuminate\Contracts\Routing\ResponseFactory as ResponseFactory;
 use Illuminate\Contracts\View\Factory as ViewFactory;
 use Illuminate\Filesystem\Filesystem as Filesystem;
 
-class Sitemap
+class LaravelSitemap
 {
     /**
      * Model instance.
@@ -282,9 +282,9 @@ class Sitemap
      *
      * @return void
      */
-    public function addSitemap($loc, $lastmod = null)
+    public function addLaravelSitemap($loc, $lastmod = null)
     {
-        $this->model->setSitemaps([
+        $this->model->setLaravelSitemaps([
             'loc' => $loc,
             'lastmod' => $lastmod,
         ]);
@@ -298,9 +298,9 @@ class Sitemap
      *
      * @return void
      */
-    public function resetSitemaps($sitemaps = [])
+    public function resetLaravelSitemaps($sitemaps = [])
     {
-        $this->model->resetSitemaps($sitemaps);
+        $this->model->resetLaravelSitemaps($sitemaps);
     }
 
     /**
@@ -339,9 +339,9 @@ class Sitemap
     {
         // check if caching is enabled, there is a cached content and its duration isn't expired
         if ($this->isCached()) {
-            ('sitemapindex' == $format) ? $this->model->resetSitemaps($this->cache->get($this->model->getCacheKey())) : $this->model->resetItems($this->cache->get($this->model->getCacheKey()));
+            ('sitemapindex' == $format) ? $this->model->resetLaravelSitemaps($this->cache->get($this->model->getCacheKey())) : $this->model->resetItems($this->cache->get($this->model->getCacheKey()));
         } elseif ($this->model->getUseCache()) {
-            ('sitemapindex' == $format) ? $this->cache->put($this->model->getCacheKey(), $this->model->getSitemaps(), $this->model->getCacheDuration()) : $this->cache->put($this->model->getCacheKey(), $this->model->getItems(), $this->model->getCacheDuration());
+            ('sitemapindex' == $format) ? $this->cache->put($this->model->getCacheKey(), $this->model->getLaravelSitemaps(), $this->model->getCacheDuration()) : $this->cache->put($this->model->getCacheKey(), $this->model->getItems(), $this->model->getCacheDuration());
         }
 
         if (! $this->model->getLink()) {
@@ -349,7 +349,7 @@ class Sitemap
         }
 
         if (! $this->model->getTitle()) {
-            $this->model->setTitle('Sitemap for '.$this->model->getLink());
+            $this->model->setTitle('LaravelSitemap for '.$this->model->getLink());
         }
 
         $channel = [
@@ -383,7 +383,7 @@ class Sitemap
             case 'txt':
                 return ['content' => $this->view->make('sitemap::txt', ['items' => $this->model->getItems(), 'style' => $style])->render(), 'headers' => ['Content-type' => 'text/plain; charset=utf-8']];
             case 'sitemapindex':
-                return ['content' => $this->view->make('sitemap::sitemapindex', ['sitemaps' => $this->model->getSitemaps(), 'style' => $style])->render(), 'headers' => ['Content-type' => 'text/xml; charset=utf-8']];
+                return ['content' => $this->view->make('sitemap::sitemapindex', ['sitemaps' => $this->model->getLaravelSitemaps(), 'style' => $style])->render(), 'headers' => ['Content-type' => 'text/xml; charset=utf-8']];
             default:
                 return ['content' => $this->view->make('sitemap::'.$format, ['items' => $this->model->getItems(), 'style' => $style])->render(), 'headers' => ['Content-type' => 'text/xml; charset=utf-8']];
         }
@@ -429,10 +429,10 @@ class Sitemap
                     // add sitemap to sitemapindex
                     if ($path != null) {
                         // if using custom path generate relative urls for sitemaps in the sitemapindex
-                        $this->addSitemap($filename.'-'.$key.'.'.$fe);
+                        $this->addLaravelSitemap($filename.'-'.$key.'.'.$fe);
                     } else {
                         // else generate full urls based on app's domain
-                        $this->addSitemap(url($filename.'-'.$key.'.'.$fe));
+                        $this->addLaravelSitemap(url($filename.'-'.$key.'.'.$fe));
                     }
                 }
 
@@ -454,10 +454,10 @@ class Sitemap
                     // add sitemap to sitemapindex
                     if (null != $path) {
                         // if using custom path generate relative urls for sitemaps in the sitemapindex
-                        $this->addSitemap($filename.'-'.$key.'.'.$fe);
+                        $this->addLaravelSitemap($filename.'-'.$key.'.'.$fe);
                     } else {
                         // else generate full urls based on app's domain
-                        $this->addSitemap(url($filename.'-'.$key.'.'.$fe));
+                        $this->addLaravelSitemap(url($filename.'-'.$key.'.'.$fe));
                     }
                 }
 
@@ -473,7 +473,7 @@ class Sitemap
 
         // clear memory
         if ('sitemapindex' == $format) {
-            $this->model->resetSitemaps();
+            $this->model->resetLaravelSitemaps();
         }
 
         $this->model->resetItems();
