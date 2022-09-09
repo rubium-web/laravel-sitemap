@@ -1,6 +1,6 @@
 {
     "name": "rubium/laravel-sitemap",
-    "description": "Rubium LaravelSitemap package for Laravel.",
+    "description": "Rubium Sitemap package for Laravel.",
     "homepage": "https://rubium.ru",
     "keywords": ["laravel", "php", "sitemap", "generator", "xml", "html", "google-news"],
     "license": "MIT",
