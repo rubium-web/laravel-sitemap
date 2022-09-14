@@ -1,55 +1,72 @@
 {
-    "name": "rubium/laravel-sitemap",
-    "description": "Rubium Sitemap package for Laravel.",
-    "homepage": "https://rubium.ru",
-    "keywords": ["laravel", "php", "sitemap", "generator", "xml", "html", "google-news"],
-    "license": "MIT",
-    "authors": [
-        {
-          "name": "Rubium Web",
-          "email": "hello@rubium.ru",
-          "role": "Developer"
-        },
-        {
-            "name": "Rumen Damyanov",
-            "email": "r@alfamatter.com",
-            "role": "Creator",
-            "homepage": "https://darumen.com"
-        }
-    ],
-    "support": {
-        "issues": "https://github.com/rubium-web/laravel-sitemap/issues",
-        "source": "https://github.com/rubium-web/laravel-sitemap",
-        "wiki": "https://github.com/rubium-web/laravel-sitemap/wiki"
+  "name": "rubium/laravel-sitemap",
+  "description": "Rubium Sitemap package for Laravel.",
+  "homepage": "https://rubium.ru",
+  "keywords": [
+    "laravel",
+    "php",
+    "sitemap",
+    "generator",
+    "xml",
+    "html",
+    "google-news"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Rubium Web",
+      "email": "hello@rubium.ru",
+      "role": "Developer"
     },
-    "require": {
-        "php": "^7.2.5|^8.0",
-        "illuminate/support": "^6.0|^7.0|^8.15|^9.0",
-        "illuminate/filesystem": "^6.0|^7.0|^8.0|^9.0"
-    },
-    "require-dev": {
-        "laravel/framework": "^v6.20.42|^7.30.6|^8.75|^9.0",
-        "phpunit/phpunit": "^8.5.8|^9.3.3",
-        "orchestra/testbench-core": "^4.18|^5.18|^6.23|^7.0",
-        "php-coveralls/php-coveralls" : "^2.2"
-    },
-    "autoload": {
-        "psr-4": {
-            "Rubium\\LaravelSitemap\\": "src"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Rubium\\LaravelSitemap\\Tests\\": "tests/"
-        }
-    },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "Rubium\\LaravelSitemap\\LaravelSitemapServiceProvider"
-            ]
-        }
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+    {
+      "name": "Rumen Damyanov",
+      "email": "r@alfamatter.com",
+      "role": "Creator",
+      "homepage": "https://darumen.com"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/rubium-web/laravel-sitemap/issues",
+    "source": "https://github.com/rubium-web/laravel-sitemap",
+    "wiki": "https://github.com/rubium-web/laravel-sitemap/wiki"
+  },
+  "require": {
+    "php": "^7.2.5|^8.0",
+    "illuminate/support": "^6.0|^7.0|^8.15|^9.0",
+    "illuminate/filesystem": "^6.0|^7.0|^8.0|^9.0"
+  },
+  "require-dev": {
+    "laravel/framework": "^v6.20.42|^7.30.6|^8.75|^9.0",
+    "phpunit/phpunit": "^8.5.8|^9.3.3",
+    "orchestra/testbench-core": "^4.18|^5.18|^6.23|^7.0",
+    "php-coveralls/php-coveralls": "^2.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "Rubium\\LaravelSitemap\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Rubium\\LaravelSitemap\\Tests\\": "tests/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Rubium\\LaravelSitemap\\LaravelSitemapServiceProvider"
+      ]
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "archive": {
+    "exclude": [
+      ".gitignore",
+      ".idea/",
+      ".git/",
+      ".github",
+      ".gitlab-ci.yml"
+    ]
+  }
 }
